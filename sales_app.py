@@ -139,4 +139,18 @@ with tab5:
                         margins=True, margins_name='Total')
     st.dataframe(pivot5.style.format("${:,.2f}"))
 
-    # TODO chart
+    # State selection
+    product_category = st.selectbox(
+        "Select a Product Category",
+        (sales_data['product_category'].unique()),
+        key="product_category_selectbox_tab5"
+    )
+
+    # Filter data based on state
+    total_sale_by_product_category = filtered_data[
+        (filtered_data['product_category'] == product_category)
+    ]
+
+    total_sale_by_product_category = total_sale_by_product_category.groupby(['customer_type', 'order_type'])['sale_price'].sum().unstack()
+
+    st.bar_chart(total_sale_by_product_category, x_label='Customer Type', y_label='Sales revenue', stack=False)
