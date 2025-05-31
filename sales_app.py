@@ -94,11 +94,11 @@ with tab3:
     )
 
     # Filter data based on state
-    filtered_data = filtered_data[
+    avg_sales = filtered_data[
         (filtered_data['customer_state'] == state)
     ]
 
-    avg_sales = filtered_data.groupby(['customer_type', 'order_type'])['sale_price'].mean().unstack()
+    avg_sales = avg_sales.groupby(['customer_type', 'order_type'])['sale_price'].mean().unstack()
 
     st.bar_chart(avg_sales, x_label='Customer Type', y_label='Sales revenue', stack=False)
 
