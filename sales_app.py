@@ -154,3 +154,6 @@ with tab5:
     total_sale_by_product_category = total_sale_by_product_category.groupby(['customer_type', 'order_type'])['sale_price'].sum().unstack()
 
     st.bar_chart(total_sale_by_product_category, x_label='Customer Type', y_label='Sales revenue', stack=False)
+
+
+# TODO Implement session_state
