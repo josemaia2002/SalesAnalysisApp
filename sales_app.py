@@ -90,7 +90,7 @@ with tab3:
     # State selection
     state = st.selectbox(
         "Select a State",
-        (sales_data['customer_state'].unique()),
+        (filtered_data['customer_state'].unique()),
         key="state_selectbox_tab3"
     )
 
@@ -117,7 +117,7 @@ with tab4:
     # State selection
     state = st.selectbox(
         "Select a State",
-        (sales_data['customer_state'].unique()),
+        (filtered_data['customer_state'].unique()),
         key="state_selectbox_tab4"
     )
 
@@ -142,7 +142,7 @@ with tab5:
     # State selection
     product_category = st.selectbox(
         "Select a Product Category",
-        (sales_data['product_category'].unique()),
+        (filtered_data['product_category'].unique()),
         key="product_category_selectbox_tab5"
     )
 
