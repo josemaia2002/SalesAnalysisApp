@@ -2,7 +2,9 @@
 
 An interactive dashboard for analyzing sales performance across regions, product categories, and customer segments. Built with Streamlit and Pandas.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://josemaia2002-bmi-calculator-app-bmi-calculator-za0vrl.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://josemaia2002-salesanalysisapp-sales-app-vbvhyu.streamlit.app/)
+
+
 
 ## Features
 
