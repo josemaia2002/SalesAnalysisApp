@@ -91,6 +91,7 @@ with tab3:
     state = st.selectbox(
         "Select a State",
         (sales_data['customer_state'].unique()),
+        key="state_selectbox_tab3"
     )
 
     # Filter data based on state
@@ -103,14 +104,31 @@ with tab3:
     st.bar_chart(avg_sales, x_label='Customer Type', y_label='Sales revenue', stack=False)
 
 with tab4:
-    st.subheader("Highest quantities of each product category within each type of customer for each state:")
+    st.subheader("Highest quantities of each product category within each type of customer for each state table:")
     pivot4 = filtered_data.pivot_table(values='sale_price', index='customer_state',
                         columns=['product_category', 'customer_type'] ,
                         aggfunc='max', fill_value=0,
                         margins=True, margins_name='Max Quantity')
     st.dataframe(pivot4.style.format("${:,.2f}"))
+    
+    # Average sales of the different types of orders placed by each type of customer for each state chart
+    st.subheader("Highest quantities of each product category within each type of customer for each state chart")
 
-    # TODO chart
+    # State selection
+    state = st.selectbox(
+        "Select a State",
+        (sales_data['customer_state'].unique()),
+        key="state_selectbox_tab4"
+    )
+
+    # Filter data based on state
+    max_sale_by_customer_type = filtered_data[
+        (filtered_data['customer_state'] == state)
+    ]
+
+    max_sale_by_customer_type = max_sale_by_customer_type.groupby(['customer_type', 'product_category'])['sale_price'].max().unstack()
+
+    st.bar_chart(max_sale_by_customer_type, x_label='Customer Type', y_label='Sales revenue', stack=False)
 
 with tab5:
     st.subheader("Total sales of each different product categories, show details of the different types of orders placed by the different types of customers:")
